@@ -1,0 +1,35 @@
+package ArubaNetworkAssignment.SignUpWork.Controller;
+
+import ArubaNetworkAssignment.SignUpWork.Model.User;
+import ArubaNetworkAssignment.SignUpWork.Repository.UserRepository;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class SignUpController {
+
+    @Autowired // to acheive dependency injection
+    private UserRepository userRepository;
+
+    @GetMapping("/signup")
+    public String showSignupForm(Model model) {
+        model.addAttribute("user", new User());
+        return "signup";
+    }
+
+    @PostMapping("/signup")
+    public String submitSignupForm(@Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "signup";
+        }
+        userRepository.save(user); // to store in tot the database
+        model.addAttribute("success", true);
+        model.addAttribute("name", user.getName());
+        return "signup";
+    }
+}
