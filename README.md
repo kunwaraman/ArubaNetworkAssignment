@@ -84,9 +84,8 @@ bash
 mvn spring-boot:run
 Access the application at:
 
-http://localhost:8080/signup
-Project Structure
-src/
+
+http://locasrc/
 ├── main/
 │   ├── java/
 │   │   └── ArubaNetworkAssignment/
@@ -98,8 +97,15 @@ src/
 │       ├── static/                    # Static assets
 │       ├── templates/                 # Thymeleaf templates
 │       └── application.properties     # Configuration
-└── test/                              # Test cases
+└── test/                              # Test caseslhost:8080/signup
+
+
+
+
+
 Validation Rules
+
+
 Field	Validation Criteria	Error Message
 Name	Not blank, letters and spaces only	"Name can only contain letters and spaces"
 Email	Not blank, valid email format	"Please enter a valid email address"
